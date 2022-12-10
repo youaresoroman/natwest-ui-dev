@@ -1,0 +1,8 @@
+@import '../../assets/scss/index';
+
+.QuestionnaireWindow {
+    display: grid;
+    grid-template-rows: auto 1fr 5rem;
+    padding: 2rem;
+    min-height: $questionnaire-window-min-size + 150px;
+}

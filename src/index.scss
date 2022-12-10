@@ -1,0 +1,36 @@
+@import './assets/scss/index.scss';
+
+:root {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background-color: $main-color;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 22px;
+    box-sizing: border-box;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+
+    /* Firefox */
+    &::-webkit-scrollbar {
+        display: none;
+        /* Chrome, Safari, Opera*/
+    }
+}

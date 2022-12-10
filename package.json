@@ -1,0 +1,64 @@
+{
+  "name": "codesandbox-template-vite",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "test": "jest",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@testing-library/react": "^13.4.0",
+    "babel-jest": "^29.3.1",
+    "jest": "^29.3.1",
+    "path": "^0.12.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.18.6",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@types/jest": "^29.2.4",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.0.0",
+    "classnames": "^2.3.2",
+    "jest-environment-jsdom": "^29.3.1",
+    "jsdom": "^20.0.3",
+    "mocha": "^10.1.0",
+    "node-sass": "^8.0.0",
+    "nyc": "^15.1.0",
+    "sass": "^1.56.2",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
+    "tslint": "^6.1.3",
+    "typescript": "^4.6.4",
+    "vite": "^3.0.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "collectCoverageFrom": [
+      "**/*.test.ts",
+      "**/*.test.tsx"
+    ],
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/node_modules"
+    ],
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text"
+    ],
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(tsx|ts)$",
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "tsx",
+      "json"
+    ]
+  }
+}
