@@ -1,5 +1,6 @@
 import { SetStateAction } from "react";
 import type { SetStateDispatch } from "./utility";
+import type { InputOption } from "./input";
 
 export type Answer = {
   id: number;
@@ -9,6 +10,8 @@ export type Answer = {
 export type Question = {
   id: number;
   question: string;
+  type: 'text' | 'option' | 'switch' | 'number';
+  options?: InputOption[]
 };
 
 export interface IQuestionnaireContext {

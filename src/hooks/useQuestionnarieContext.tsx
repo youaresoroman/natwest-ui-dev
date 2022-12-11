@@ -23,11 +23,15 @@ import { useGetQuestionnaireContext } from './useGetQuestionnaireContext';
 export const useQuestionnaireContext: IUseQuestionnaireContext = () => {
     const { answers, questions, setAnswers, setQuestions } = useGetQuestionnaireContext();
 
+    const setAnswersList = (answers: Answer[]) => setAnswers(answers);
+
     const setAnswer = (answer: Answer) => setAnswers((prev: Answer[]) => setAnswerValue(answer, prev));
 
     const isAnswered = useCallback((id: number) => checkIsAnswered(id, answers), [answers]);
 
+    const getAnswer = useCallback((id: number) => answers.find((answer: Answer) => answer.id === id) || null, [answers]);
+
     const getQuestion = useCallback((id: number) => questions[id] || null, [questions]);
 
-    return { answers, questions, setQuestions, setAnswer, isAnswered, getQuestion };
+    return { answers, questions, setQuestions, setAnswer, setAnswers: setAnswersList, isAnswered, getQuestion, getAnswer };
 }

@@ -6,5 +6,8 @@ export const checkIsAnswered = (questionId: number, answers: IQuestionnaireConte
 
 export const setAnswerValue = (answer: Answer, answers: IQuestionnaireContext['answers']) => {
     const newAnswers = answers.filter((item) => item.id !== answer.id);
-    return [...newAnswers, answer]
+    if (answer.value !== '') {
+        return [...newAnswers, answer]
+    }
+    return [...newAnswers]
 }

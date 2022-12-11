@@ -1,4 +1,4 @@
-import { createContext, FC, ReactNode, useState } from 'react';
+import { createContext, FC, ReactNode, useEffect, useState } from 'react';
 import type { Answer, IQuestionnaireContext, Question } from '@/types/questionnaire';
 import { initalContextValue } from '@/constants/questionnaireContext';
 
@@ -18,6 +18,14 @@ export const QuestionnaireContext = createContext<IQuestionnaireContext>(initalC
 export const QuestionnaireProvider: FC<{ children: ReactNode }> = ({ children }) => {
     const [answers, setAnswers] = useState<Answer[]>([]);
     const [questions, setQuestions] = useState<Question[]>([]);
+
+    useEffect(() => {
+        console.log('answers', answers);
+    }, [answers]);
+
+    useEffect(() => {
+        console.log('questions', questions);
+    }, [questions]);
 
     return (
         <QuestionnaireContext.Provider value={{ answers, questions, setAnswers, setQuestions }}>

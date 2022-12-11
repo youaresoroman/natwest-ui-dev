@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useQuestionnaireContext } from '@/hooks';
 import type { IScreen } from '@/types/screens';
-import { QuestionnaireWindow, QuestionTitle, QuestionButtons, QuestionBody } from "@/components";
+import { QuestionnaireWindow, QuestionTitle, QuestionButtons, QuestionBody, Input } from "@/components";
 
 /**
  * @name Question
@@ -14,15 +14,23 @@ import { QuestionnaireWindow, QuestionTitle, QuestionButtons, QuestionBody } fro
  * <Question current={current} goNext={goNext} goPrev={goPrev} />
  */
 
-export const Question: IScreen = ({ current, goNext, goPrev }) => {
-    const { getQuestion } = useQuestionnaireContext();
+export const Question: IScreen = ({ current, isLast, goNext, goPrev }) => {
+    const { getQuestion, setAnswer, getAnswer, answers, questions } = useQuestionnaireContext();
+
     const question = getQuestion(current);
+    const answer = getAnswer(current);
+
+    const filled = answers.length === questions.length;
+
+    const onChange = (value: string) => setAnswer({ id: current, value });
 
     return (
         <QuestionnaireWindow>
             <QuestionTitle>{question?.question}</QuestionTitle>
-            <QuestionBody>{current}</QuestionBody>
-            <QuestionButtons goNext={goNext} goPrev={goPrev} />
+            <QuestionBody>
+                <Input onChange={onChange} type={question?.type || 'text'} defaultValue={answer?.value} options={question?.options} />
+            </QuestionBody>
+            <QuestionButtons goNext={goNext} goPrev={goPrev} hideNext={isLast && !filled} />
         </QuestionnaireWindow>
     )
 }

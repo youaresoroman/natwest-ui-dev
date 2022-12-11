@@ -19,13 +19,23 @@ export const Screens: FC<ScreensProps> = ({
 }) => {
     const [current, setCurrent] = useState(0);
 
-    const { isLastScreen, isFirstScreen } = useMemo(() => ({
+    const { isLastScreen, isFirstScreen, isLast } = useMemo(() => ({
         isLastScreen: current === quantity,
+        isLast: current === quantity - 1,
         isFirstScreen: current === 0
     }), [current, quantity])
 
     const goNext = () => setCurrent((prev) => prev + 1)
     const goPrev = () => setCurrent((prev) => prev - 1)
 
-    return isLastScreen ? <FinalScreen goPrev={goPrev} /> : <Screen current={current} goNext={!isLastScreen ? goNext : null} goPrev={!isFirstScreen ? goPrev : null} />
+    return isLastScreen
+        ? <FinalScreen goPrev={goPrev} />
+        : (
+            <Screen
+                current={current}
+                goNext={!isLastScreen ? goNext : null}
+                goPrev={!isFirstScreen ? goPrev : null}
+                isLast={isLast}
+            />
+        )
 }
