@@ -1,6 +1,6 @@
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 import { ScreenComponentProps } from "@/types/screens";
-import { QuestionBody, QuestionButtons, QuestionnaireWindow, QuestionTitle } from "@/components";
+import { QuestionBody, QuestionButtons, QuestionnaireWindow, QuestionTitle, AnswersList } from "@/components";
 import { useQuestionnaireContext } from "@/hooks";
 
 /**
@@ -17,16 +17,12 @@ import { useQuestionnaireContext } from "@/hooks";
 export const FinalScreen: FC<Pick<ScreenComponentProps, 'goPrev'>> = ({ goPrev }) => {
     const { answers, questions } = useQuestionnaireContext();
 
-    useEffect(() => {
-        console.log('final answers', answers);
-    }, [answers]);
-
     return (
         <QuestionnaireWindow>
             <QuestionTitle subTitle="Let's look on the answers">You have reached the end of the questionnaire</QuestionTitle>
-            <QuestionBody>{answers.map(({ id, value }, index) => (
-                <p key={`${value}-${index}`}>{questions[id].question} - {value}</p>
-            ))}</QuestionBody>
+            <QuestionBody>
+                <AnswersList />
+            </QuestionBody>
             <QuestionButtons goPrev={goPrev} goNext={null} hideNext />
         </QuestionnaireWindow>
     )

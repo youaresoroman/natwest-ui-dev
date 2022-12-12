@@ -3,6 +3,10 @@
     margin-bottom: 1rem;
     text-align: center;
 
+    h1, h3 {
+        overflow-wrap: anywhere;
+    }
+
     h1 {
         font-size: 2em;
         line-height: 1.1;

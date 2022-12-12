@@ -10,9 +10,12 @@ export type Answer = {
 export type Question = {
   id: number;
   question: string;
-  type: 'text' | 'option' | 'switch' | 'number';
+  type: 'text' | 'option' | 'radio';
   options?: InputOption[]
 };
+
+export type QuestionPlusAnswer = Omit<Question, 'options'> & Pick<Answer, 'value'>;
+
 
 export interface IQuestionnaireContext {
   questions: Question[];

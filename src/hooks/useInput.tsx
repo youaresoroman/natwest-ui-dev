@@ -1,11 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-
-export interface UseInput {
-    (props: { name: string, defaultValue?: string, onChange: (props: { name: string, value: string }) => void }): {
-        updateValue: (value: string) => void;
-        value: string;
-    }
-}
+import { UseInput } from "@/types/useInput";
 
 export const useInput: UseInput = ({ name, defaultValue, onChange }) => {
     const lastValue = useRef<string>(defaultValue || "");

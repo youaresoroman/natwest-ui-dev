@@ -1,4 +1,4 @@
-import { createContext, FC, ReactNode, useEffect, useState } from 'react';
+import React, { createContext, FC, ReactNode, useEffect, useState } from 'react';
 import type { Answer, IQuestionnaireContext, Question } from '@/types/questionnaire';
 import { initalContextValue } from '@/constants/questionnaireContext';
 

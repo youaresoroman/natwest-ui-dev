@@ -1,4 +1,4 @@
-import type { IQuestionnaireContext } from './questionnaire';
+import type { IQuestionnaireContext, QuestionPlusAnswer } from './questionnaire';
 
 export interface IUseQuestionnaireContextReturn {
     answers: IQuestionnaireContext['answers'];
@@ -9,6 +9,7 @@ export interface IUseQuestionnaireContextReturn {
     setQuestions: (questions: Question[]) => void;
     setAnswers: (answers: Answer[]) => void;
     getAnswer: (questionId: number) => Answer | null;
+    compileAnswers: () => QuestionPlusAnswer[];
 }
 
 export interface IUseQuestionnaireContext {

@@ -1,3 +1,5 @@
+@import '../../assets/scss/index';
+
 .SelectInput {
     position: relative;
     float: left;
@@ -5,9 +7,9 @@
     margin: 50px 33%;
 
     &:after {
-        content: '<>';
+        content: '>';
         font: 17px "Consolas", monospace;
-        color: #333;
+        color: $theme-color;
         -webkit-transform: rotate(90deg);
         -moz-transform: rotate(90deg);
         -ms-transform: rotate(90deg);
@@ -17,7 +19,7 @@
 
         top: 18px;
         padding: 0 0 2px;
-        border-bottom: 1px solid #999;
+        //border-bottom: 1px solid $theme-color;
         /*left line */
 
         position: absolute;
@@ -39,11 +41,19 @@
         padding: 0px 24px;
         font-size: 16px;
         line-height: 1.75;
-        color: #333;
-        background-color: #ffffff;
+        color: $theme-color;
+        background-color: transparent;
         background-image: none;
-        border: 1px solid #cccccc;
+        border: none;
+        border-bottom: 3px solid $primary;
+        //border-radius: 10px;
         -ms-word-break: normal;
         word-break: normal;
+
+       &:focus {
+            border-width: 3px;
+            border-image: linear-gradient(to right, $primary, $theme-color);
+            border-image-slice: 1;
+        }
     }
 }

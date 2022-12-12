@@ -1,18 +1,26 @@
-import { Answer, Question } from "@/types/questionnaire";
-import React from "react";
+import React, { FC } from "react";
 import { AnswerItem } from "@/components";
 import styles from "./AnswersList.module.scss";
+import { useQuestionnaireContext } from "@/hooks";
 
-interface AnswerListProps {
-    answers: Answer[];
-    questions: Question[];
-}
+/**
+ * @name AnswersList
+ * @description This is a component that renders a list of answers
+ * @param {React.ReactNode} children - This is the children of the component
+ * @returns {JSX.Element} - This is the component
+ * @example
+ * <AnswersList />
+ */
 
-export const AnswerList: React.FC<AnswerListProps> = ({ answers, questions }) => {
+export const AnswersList: FC = () => {
+    const { compileAnswers } = useQuestionnaireContext();
+
+    const answers = compileAnswers();
+
     return (
-        <div className={styles.AnswerList}>
-            {answers.map(({ id, value }, index) => (
-                <AnswerItem key={`${value}-${index}`} id={id} question={questions[id]?.question} value={value} />
+        <div className={styles.AnswerList} data-testid="AnswersList">
+            {answers.map(({ id, value, question }, index) => (
+                <AnswerItem key={`${value}-${index}`} id={id} question={question} value={value} />
             ))}
         </div>
     );
