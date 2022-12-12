@@ -71,6 +71,26 @@ export const data: DataType = {
                     value: '1',
                 },
             ]
+        },
+        {
+            data: {
+                answer: {
+                    id: 1,
+                    value: '',
+                },
+                answers: [
+                    {
+                        id: 2,
+                        value: '1',
+                    },
+                ]
+            },
+            expected: [
+                {
+                    id: 2,
+                    value: '1',
+                }
+            ]
         }
     ]
 }
