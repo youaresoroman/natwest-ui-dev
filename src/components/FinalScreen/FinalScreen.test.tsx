@@ -12,7 +12,7 @@ describe("FinalScreen", () => {
     it('should call goPrev function when "Back" button is clicked', async () => {
         const goPrev = jest.fn();
         render(<FinalScreen goPrev={goPrev} />);
-        const button = screen.getByText("Prev")
+        const button = screen.getByText("Start Again")
         await act(async () => {
             fireEvent.click(button);
         });

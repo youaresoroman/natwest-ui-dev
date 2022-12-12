@@ -19,14 +19,6 @@ export const QuestionnaireProvider: FC<{ children: ReactNode }> = ({ children })
     const [answers, setAnswers] = useState<Answer[]>([]);
     const [questions, setQuestions] = useState<Question[]>([]);
 
-    useEffect(() => {
-        console.log('answers', answers);
-    }, [answers]);
-
-    useEffect(() => {
-        console.log('questions', questions);
-    }, [questions]);
-
     return (
         <QuestionnaireContext.Provider value={{ answers, questions, setAnswers, setQuestions }}>
             {children}

@@ -17,8 +17,6 @@ export const AnswersList: FC = () => {
 
     const answers = compileAnswers();
 
-    console.log(answers)
-
     return (
         <div className={styles.AnswerList} data-testid="AnswersList">
             {answers.map(({ id, value, question, short }, index) => (
