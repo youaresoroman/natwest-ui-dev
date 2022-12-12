@@ -43,16 +43,19 @@ describe("AnswersList", () => {
                 {
                     id: 1,
                     question: "What is your name?",
+                    short: "name",
                     type: "text"
                 },
                 {
                     id: 2,
                     question: "How ofter do you ... ?",
+                    short: "often",
                     type: "radio"
                 },
                 {
                     id: 3,
                     question: "What is your favorite color?",
+                    short: "color",
                     type: "option",
                     options: [
                         {

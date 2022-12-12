@@ -10,6 +10,7 @@ export type Answer = {
 export type Question = {
   id: number;
   question: string;
+  short: string;
   type: 'text' | 'option' | 'radio';
   options?: InputOption[]
 };

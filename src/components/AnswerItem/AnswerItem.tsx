@@ -5,6 +5,7 @@ import styles from "./AnswerItem.module.scss";
 interface AnswerItemProps {
     id: number;
     question: Question['question'];
+    short: Question['short'];
     value: Answer['value'];
 }
 
@@ -21,7 +22,8 @@ interface AnswerItemProps {
 
 export const AnswerItem: React.FC<AnswerItemProps> = ({
     id,
+    short,
     value,
 }) => {
-    return <div className={styles.AnswerItem} data-testid='AnswerItem'>#{id + 1} - {value}</div>;
+    return <div className={styles.AnswerItem} data-testid='AnswerItem'>#{id + 1} - {short} - {value}</div>;
 };

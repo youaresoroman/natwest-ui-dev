@@ -14,14 +14,14 @@ import styles from './QuestionButtons.module.scss';
  * <QuestionButtons goNext={goNext} goPrev={goPrev} />
  */
 
-export const QuestionButtons: IQuestionButtons = ({ goNext, goPrev, hideNext, hidePrev }) => {
+export const QuestionButtons: IQuestionButtons = ({ goNext, goPrev, hideNext, hidePrev, isLast, isFinalScreen }) => {
     return (
         <div className={styles.QuestionButtons}>
             <div className={classnames(styles.side, styles.left)}>
-                {!hidePrev && <QuestionButton onClick={goPrev}>Prev</QuestionButton>}
+                {!hidePrev && <QuestionButton onClick={goPrev}>{!isFinalScreen ? 'Back' : 'Start Again'}</QuestionButton>}
             </div>
             <div className={classnames(styles.side, styles.right)}>
-                {!hideNext && <QuestionButton onClick={goNext}>Next</QuestionButton>}
+                {!hideNext && <QuestionButton onClick={goNext}>{!isLast ? 'Next' : 'Finish'}</QuestionButton>}
             </div>
         </div>
     )

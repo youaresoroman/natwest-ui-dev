@@ -11,6 +11,10 @@ export interface Input<V, T extends {}> {
     } & T): ReactElement
 }
 
+export interface InputWithOptions {
+    options: InputOption[];
+}
+
 export type InputOption = {
     id: number;
     label: string;

@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 import type { Question } from "@/types/questionnaire";
-import { SelectInput, TextInput } from "@/components";
+import { RadioInput, SelectInput, TextInput } from "@/components";
 
 export interface IInput {
     (props: {
@@ -19,6 +19,9 @@ export const Input: IInput = ({ type, defaultValue, options, onChange }) => {
             )}
             {type === 'option' && (
                 <SelectInput onChange={({ value }) => onChange(value)} defaultValue={defaultValue} name='select-input' label='Label' options={options || []} />
+            )}
+            {type === 'radio' && (
+                <RadioInput onChange={({ value }) => onChange(value)} defaultValue={defaultValue} name='select-input' label='Label' options={options || []} />
             )}
         </>
     )

@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import type { Answer } from '@/types/questionnaire';
 import type { IUseQuestionnaireContext, IUseQuestionnaireContextReturn } from '@/types/useQuestionnaireContext';
-import { checkIsAnswered, setAnswerValue } from '@/utils/questionnarie';
+import { checkIsAnswered, doCompileAnswers, setAnswerValue } from '@/utils/questionnarie';
 import { useGetQuestionnaireContext } from './useGetQuestionnaireContext';
 
 /**
@@ -26,15 +26,9 @@ export const useQuestionnaireContext: IUseQuestionnaireContext = () => {
 
     const getQuestion = useCallback((id: number) => questions[id] || null, [questions]);
 
-    const compileAnswers: IUseQuestionnaireContextReturn['compileAnswers'] = useCallback(() => {
-        const answerRecords = answers.filter(({id}) => questions[id] !== undefined);
-        const compiledAnswers = answerRecords.map(({ id, value }) => {
-            const { question, type } = questions[id];
-            return { id, question, type, value };
-        });
+    const compileAnswers: IUseQuestionnaireContextReturn['compileAnswers'] = useCallback(() => doCompileAnswers(answers, questions), [answers, questions]);
 
-        return compiledAnswers;
-    }, [answers, questions]);
+    const hasAllAnswers = answers.length === questions.length;
 
-    return { answers, questions, setQuestions, setAnswer, setAnswers: setAnswersList, isAnswered, getQuestion, getAnswer, compileAnswers  };
+    return { hasAllAnswers, setQuestions, setAnswer, setAnswers: setAnswersList, isAnswered, getQuestion, getAnswer, compileAnswers };
 }

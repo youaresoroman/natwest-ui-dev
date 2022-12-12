@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import { ScreenComponentProps } from "@/types/screens";
 import { QuestionBody, QuestionButtons, QuestionnaireWindow, QuestionTitle, AnswersList } from "@/components";
-import { useQuestionnaireContext } from "@/hooks";
 
 /**
  * @name FinalScreen
@@ -15,15 +14,13 @@ import { useQuestionnaireContext } from "@/hooks";
  */
 
 export const FinalScreen: FC<Pick<ScreenComponentProps, 'goPrev'>> = ({ goPrev }) => {
-    const { answers, questions } = useQuestionnaireContext();
-
     return (
         <QuestionnaireWindow>
             <QuestionTitle subTitle="Let's look on the answers">You have reached the end of the questionnaire</QuestionTitle>
             <QuestionBody>
                 <AnswersList />
             </QuestionBody>
-            <QuestionButtons goPrev={goPrev} goNext={null} hideNext />
+            <QuestionButtons goPrev={goPrev} goNext={null} hideNext isFinalScreen={true} />
         </QuestionnaireWindow>
     )
 }

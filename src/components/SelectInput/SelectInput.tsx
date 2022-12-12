@@ -1,13 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Input, InputOption } from "@/types/input";
+import React from "react";
+import type { Input, InputWithOptions } from "@/types/input";
 import styles from "./SelectInput.module.scss";
 import { useInput } from "@/hooks";
 
-interface SelectInputProps {
-    options: InputOption[];
-}
-
-export const SelectInput: Input<string, SelectInputProps> = ({ name, defaultValue, options, onChange }) => {
+export const SelectInput: Input<string, InputWithOptions> = ({ name, defaultValue, options, onChange }) => {
     const { value, updateValue } = useInput({ name, defaultValue, onChange });
 
     const onUpdate = (e: React.ChangeEvent<HTMLSelectElement>) => {

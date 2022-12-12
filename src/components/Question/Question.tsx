@@ -15,12 +15,10 @@ import { QuestionnaireWindow, QuestionTitle, QuestionButtons, QuestionBody, Inpu
  */
 
 export const Question: IScreen = ({ current, isLast, goNext, goPrev }) => {
-    const { getQuestion, setAnswer, getAnswer, answers, questions } = useQuestionnaireContext();
+    const { getQuestion, setAnswer, getAnswer, hasAllAnswers } = useQuestionnaireContext();
 
     const question = getQuestion(current);
     const answer = getAnswer(current);
-
-    const filled = answers.length === questions.length;
 
     const onChange = (value: string) => setAnswer({ id: current, value });
 
@@ -30,7 +28,7 @@ export const Question: IScreen = ({ current, isLast, goNext, goPrev }) => {
             <QuestionBody>
                 <Input onChange={onChange} type={question?.type || 'text'} defaultValue={answer?.value} options={question?.options} />
             </QuestionBody>
-            <QuestionButtons goNext={goNext} goPrev={goPrev} hideNext={isLast && !filled} />
+            <QuestionButtons goNext={goNext} goPrev={goPrev} hideNext={isLast && !hasAllAnswers} isLast={isLast} />
         </QuestionnaireWindow>
     )
 }

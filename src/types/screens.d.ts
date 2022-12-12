@@ -6,8 +6,11 @@ export type ScreenButtonEvent = EventFunction | null;
 export interface ScreenComponentProps {
     current: number;
     isLast: boolean;
+    isFinalScreen: boolean;
     goNext: ScreenButtonEvent;
     goPrev: ScreenButtonEvent;
+    goFirst: EventFunction;
+    goLast: EventFunction;
 }
 
 export interface ScreensProps {

@@ -4,16 +4,28 @@ export const questions: Question[] = [
     {
         id: 1,
         question: 'What is your name?',
+        short: 'name',
         type: 'text',
     },
     {
         id: 2,
-        question: 'What is your age?',
-        type: 'text',
+        question: 'How ofter do you do sports ?',
+        short: 'sports',
+        type: 'radio',
+        options: [
+            { id: 1, label: 'Once a week', value: 'once a week' },
+            { id: 2, label: 'Twice a week', value: 'twice a week' },
+            { id: 3, label: 'Three times a week', value: 'three times a week' },
+            { id: 4, label: 'Four times a week', value: 'four times a week' },
+            { id: 5, label: 'Five times a week', value: 'five times a week' },
+            { id: 6, label: 'Six times a week', value: 'six times a week' },
+            { id: 7, label: 'Everyday', value: 'everyday' },
+        ],
     },
     {
         id: 3,
         question: 'What is your favorite color?',
+        short: 'color',
         type: 'option',
         options: [
             { id: 1, label: 'Red', value: 'red' },
