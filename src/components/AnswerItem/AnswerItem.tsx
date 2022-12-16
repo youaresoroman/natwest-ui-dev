@@ -1,12 +1,13 @@
 import { Question, Answer } from "@/types/questionnaire";
 import React from "react";
+import { ColorDot } from "../ColorDot/ColorDot";
 import styles from "./AnswerItem.module.scss";
 
 interface AnswerItemProps {
-    id: number;
-    question: Question['question'];
-    short: Question['short'];
-    value: Answer['value'];
+  id: number;
+  question: Question["question"];
+  short: Question["short"];
+  value: Answer["value"];
 }
 
 /**
@@ -20,10 +21,15 @@ interface AnswerItemProps {
  * <AnswerItem id={1} question="Some question" value="Some value" />
  */
 
-export const AnswerItem: React.FC<AnswerItemProps> = ({
-    id,
-    short,
-    value,
-}) => {
-    return <div className={styles.AnswerItem} data-testid='AnswerItem'>#{id + 1} - {short} - {value}</div>;
+export const AnswerItem: React.FC<AnswerItemProps> = ({ id, short, value }) => {
+  return (
+    <div className={styles.AnswerItem} data-testid="AnswerItem">
+      #{id + 1} - {short} - {value}
+      {short === "color" && (
+        <>
+          <ColorDot color={value} />
+        </>
+      )}
+    </div>
+  );
 };
